@@ -1,4 +1,4 @@
-(function () {
+/*(function () {
 
   function getById(id) {
     return document.getElementById(id);
@@ -46,9 +46,9 @@
   }
 
 })();
+*/
 
-
-/*document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
 
     function hideMultipleFields(ids) {
         ids.forEach(function (id) {
@@ -66,7 +66,7 @@
     ]);
 
 });
-   */
+   
 
 
   /*  var config = {
