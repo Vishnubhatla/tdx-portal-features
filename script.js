@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Call the function with your field IDs
     hideMultipleFields([
         'ctl00_ctl00_cpContent_cpContent_divModified',
-        'ctl00_ctl00_cpContent_cpContent_divCreated'
+        'divCreated'
     ]);
 
 });
