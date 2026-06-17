@@ -1,4 +1,5 @@
 (function () {
+  function hideAttribute(){
     var config = {
         service: [
             'Enrollment Success / Submit a Financial Aid Web Case'
@@ -13,4 +14,62 @@
             if (lastModified) lastModified.style.display = 'none';
         }
     }
+      
+  }
+      
+  function setup(toggle) {
+    var raw = (toggle.textContent || "").trim();
+    var parts = raw.split("|");
+    var label = (parts[0] || "Section").trim();
+    var fields = (parts[1] || "")
+                   .split(",")
+                   .map(function (s) { return s.trim(); })
+                   .filter(Boolean);
+
+    var startOpen = toggle.className.indexOf("tdx-open") !== -1;
+
+    toggle.style.display      = 'block';
+    toggle.style.width        = '100%';
+    toggle.style.textAlign    = 'left';
+    toggle.style.padding      = '10px 14px';
+    toggle.style.border       = '1px solid #ccc';
+    toggle.style.borderRadius = '6px';
+    toggle.style.fontSize     = '14px';
+    toggle.style.fontWeight   = 'bold';
+    toggle.style.cursor       = 'pointer';
+    toggle.style.marginBottom = '6px';
+    toggle.style.userSelect   = 'none';
+
+    function setState(open) {
+      fields.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.style.display = open ? '' : 'none';
+      });
+      toggle.innerHTML = (open ? '&#9660; ' : '&#9654; ') + label +
+                         (open ? ' &mdash; click to collapse' : ' &mdash; click to expand');
+      toggle.style.background = open ? '#e8f0fe' : '#f0f0f0';
+    }
+
+    var isOpen = startOpen;
+    setState(isOpen);
+
+    toggle.addEventListener('click', function () {
+      isOpen = !isOpen;
+      setState(isOpen);
+    });
+  }
+
+  function init() {
+    var toggles = document.querySelectorAll('.tdx-collapse');
+    for (var i = 0; i < toggles.length; i++) {
+      setup(toggles[i]);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
 })();
