@@ -1,0 +1,1 @@
+window.onload = function () {2    var actionName = document.getElementById('hdrActionName').innerText.trim().toLowerCase();3 4    if (actionName === 'reject') {5        document.getElementById('ctl00_ctl00_cpContent_cpContent_txtActionComments')6                .setAttribute('required', 'required');7    }8};
