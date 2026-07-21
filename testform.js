@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Get target field ID from the div attribute:
-    // <div class="tdx-grid-view" target="attribute37469"></div>
     const targetId = tableContainer.getAttribute("target");
 
     tableContainer.innerHTML = `
