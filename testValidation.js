@@ -137,6 +137,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
         endDate.reportValidity();
         hours.reportValidity();
+        const warningDiv =
+            document.getElementById("tableWarning");
+
+        warningDiv.textContent = "";
+
+        if (startDate.value && endDate.value) {
+
+            const start = new Date(startDate.value);
+            const end = new Date(endDate.value);
+
+            const diffDays =
+                Math.floor((end - start) / (1000 * 60 * 60 * 24)) + 1;
+
+            if (diffDays > 14) {
+
+                warningDiv.textContent =
+                    "Warning: The requested date range exceeds 14 calendar days. Please contact your dean to create a memo.";
+            }
+        }
     }
 
     function updateTargetField() {
