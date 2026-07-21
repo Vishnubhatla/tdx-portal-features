@@ -3,12 +3,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const tableContainer = document.querySelector(".tdx-grid-view");
 
     if (!tableContainer) {
-        console.error("tdx-grid-view container not found.");
+        // console.error("tdx-grid-view container not found.");
         return;
     }
 
     // Get target field ID from the div attribute:
-    // <div class="tdx-grid-view" target="attribute37469"></div>
     const targetId = tableContainer.getAttribute("target");
 
     tableContainer.innerHTML = `
@@ -21,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Number of Hours</th>
-                    <th>Action</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody id="tableBody"></tbody>
@@ -102,6 +101,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function validateRow(row) {
+        const warningDiv = document.querySelector(".deanMemo");
+        if (!warningDiv) {
+            // console.error("tdx-grid-view container not found.");
+            return;
+        }
+
+        // warningDiv.textContent = "";
 
         const startDate =
             row.querySelector(".startdate-field");
@@ -137,10 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         endDate.reportValidity();
         hours.reportValidity();
-        const warningDiv =
-            document.getElementById("tableWarning");
 
-        warningDiv.textContent = "";
 
         if (startDate.value && endDate.value) {
 
@@ -150,10 +153,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const diffDays =
                 Math.floor((end - start) / (1000 * 60 * 60 * 24)) + 1;
 
+            // Show warning only when date range exceeds 14 calendar days
             if (diffDays > 14) {
 
                 warningDiv.textContent =
-                    "Warning: The requested date range exceeds 14 calendar days. Please contact your dean to create a memo.";
+                    "Warning: Please notify your Dean, so that memo of agreement can be created.";
             }
         }
     }
@@ -185,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
             text += `Start Date: ${startDate}\n`;
             text += `End Date: ${endDate}\n`;
             text += `Number of Hours: ${hours}\n`;
-            text += `---------------------------------------------------------------------------------------\n`;
+            text += `-------------------------------------------------------\n`;
         });
 
         target.value = text;
@@ -201,3 +205,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
+
+Can the add button be on every row rather than at the top
