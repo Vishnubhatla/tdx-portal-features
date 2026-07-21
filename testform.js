@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const tableContainer = document.querySelector(".tdx-grid-view");
 
     if (!tableContainer) {
-        console.error("tdx-grid-view container not found.");
+        // console.error("tdx-grid-view container not found.");
         return;
     }
 
@@ -101,9 +101,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function validateRow(row) {
-        const warningDiv = document.getElementById("tableWarning");
+        const warningDiv = document.querySelector(".deanMemo");
+        if (!warningDiv) {
+            // console.error("tdx-grid-view container not found.");
+            return;
+        }
 
-        warningDiv.textContent = "";
+        // warningDiv.textContent = "";
 
         const startDate =
             row.querySelector(".startdate-field");
@@ -185,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
             text += `Start Date: ${startDate}\n`;
             text += `End Date: ${endDate}\n`;
             text += `Number of Hours: ${hours}\n`;
-            text += `---------------------------------------------------------------------------------------\n`;
+            text += `-------------------------------------------------------\n`;
         });
 
         target.value = text;
