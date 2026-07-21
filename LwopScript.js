@@ -167,12 +167,9 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        const rows =
-            document.querySelectorAll("#tableBody tr");
+        const rows = document.querySelectorAll("#tableBody tr");
 
-        // Header row with TAB separator
-        let text =
-            "Start Date\tEnd Date\tNumber of Hours\n";
+        let text = "";
 
         rows.forEach(row => {
 
@@ -185,8 +182,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const hours =
                 row.querySelector(".hours-field").value || "";
 
-            text +=
-                `${startDate}\t${endDate}\t${hours}\n`;
+            text += `Start Date: ${startDate}\n`;
+            text += `End Date: ${endDate}\n`;
+            text += `Number of Hours: ${hours}\n`;
+            text += `---------------------------------------------------------------------------------------\n`;
         });
 
         target.value = text;
