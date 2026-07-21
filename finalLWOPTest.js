@@ -205,5 +205,3 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
-
-Can the add button be on every row rather than at the top
